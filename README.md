@@ -3,6 +3,7 @@
 <h2>Spring/ Search and Paging</h2>
 <br>
 <h3><i>Paging DTO</i></h3>
+
 ![image](https://user-images.githubusercontent.com/71121027/101321038-1309c280-38a8-11eb-8be2-d02607ea2a30.png)
 
 
@@ -11,6 +12,7 @@
 <h5>스프링 페이징 검색 기능구현</h5>
 <br>
 <hr>
+
 ![image](https://user-images.githubusercontent.com/71121027/101319116-c40e5e00-38a4-11eb-8792-962fe90cf82a.png)
 
 ![image](https://user-images.githubusercontent.com/71121027/101319355-2f583000-38a5-11eb-9a47-162edb5e801c.png)
