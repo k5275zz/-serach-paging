@@ -17,7 +17,7 @@
 회원관리, 게시판관리 두개 구현하였습니다.
 <br>
 <br>
-<h3 style="color: 'red';">문제점 </h3>
+<h3 style="color: red;">문제점 </h3>
 1. 페이지 이동후 검색이 안된다.
 
 ![image](https://user-images.githubusercontent.com/71121027/101320694-88c15e80-38a7-11eb-9f82-b60f88123a44.png)
