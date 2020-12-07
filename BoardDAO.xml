@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="org.jht.mapper.BoardDAO">
+	<!-- 글쓰기를 하기 위한 DAO(Insert) -->
+	<insert id="boardInsert">
+		insert into tbl_board(title,content,writer)
+		values(#{title},#{content},#{writer});
+	</insert>
+	<select id="boardList" resultType="org.jht.dto.BoardDTO">
+		select *
+		from (
+			select @rownum:=@rownum+1 as rownum,b.*
+			from (select @rownum:=0) as tmp, tbl_board as b
+			<if test='type == "t"'>
+			where title like concat('%',#{keyword},'%')
+			</if>
+			<if test='type == "c"'>
+			where content like concat('%',#{keyword},'%')
+			</if>
+			<if test='type == "w"'>
+			where writer like concat('%',#{keyword},'%')
+			</if>  
+			<if test='type == "tw"'>
+			where content like concat('%',#{keyword},'%') or title like concat('%',#{keyword},'%')
+			</if>
+   			order by bno desc
+			) as pagingboard
+			<![CDATA[where rownum>(#{pageNum}-1)*#{amount} and rownum<=(#{pageNum})*#{amount};]]>
+		
+	</select>
+	<select id="boardDetail" resultType="org.jht.dto.BoardDTO">
+		select * 
+		from tbl_board 
+		where bno=#{bno};
+	</select>
+	<update id="boardUpdate">
+		update tbl_board 
+		set title=#{title}, content=#{content}
+		 where bno=#{bno};
+	</update>
+	<delete id="boardDelete">
+		delete from tbl_board 
+		where bno=#{bno};
+	</delete>
+	<select id="boardLoginCheck" resultType="org.jht.dto.MemberDTO">
+		select * from member where id=#{id};
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from tbl_board
+	</select>
+  </mapper>
+  
+ 

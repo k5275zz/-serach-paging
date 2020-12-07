@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.jht.mapper.MemberDAO">
+	<insert id="memberInsert">
+		insert into member(id,pw,name,email) values(#{id},#{pw},#{name},#{email});
+	</insert>
+	<select id="memberList" resultType="org.jht.dto.MemberDTO">
+		select *
+		from (
+		select @rownum:=@rownum+1 as rownum,b.*
+		from (select @rownum:=0) as tmp, member as b
+		<if test='type == "id"'>
+			where id like concat('%',#{keyword},'%')
+		</if>
+		<if test='type == "pw"'>
+			where pw like concat('%',#{keyword},'%')
+		</if>
+		<if test='type == "name"'>
+			where name like concat('%',#{keyword},'%')
+		</if>
+		<if test='type == "iname"'>
+			where id like concat('%',#{keyword},'%') or name
+			like concat('%',#{keyword},'%')
+		</if>
+		order by joindate desc
+		) as pagingboard
+			<![CDATA[where rownum>(#{pageNum}-1)*#{amount} and rownum<=(#{pageNum})*#{amount};]]>
+
+	</select>
+	<select id="memberDetail" resultType="org.jht.dto.MemberDTO">
+		select * from member where id=#{id};
+	</select>
+	<update id="memberUpdate">
+		update member
+		set pw=#{pw},name=#{name}, email=#{email}
+		where id=#{id};
+	</update>
+	<delete id="memberDelete">
+		delete from member
+		where id=#{id};
+	</delete>
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from member
+	</select>
+</mapper>
+  
