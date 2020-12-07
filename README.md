@@ -5,7 +5,7 @@
 
 <h5>스프링 페이징 검색 기능구현</h5>
 <br>
-
+<hr>
 ![image](https://user-images.githubusercontent.com/71121027/101319116-c40e5e00-38a4-11eb-8792-962fe90cf82a.png)
 
 ![image](https://user-images.githubusercontent.com/71121027/101319355-2f583000-38a5-11eb-9a47-162edb5e801c.png)
@@ -16,7 +16,8 @@
 
 회원관리, 게시판관리 두개 구현하였습니다.
 <br>
-문제점 
+<br>
+<h3>문제점 </h3>
 1. 페이지 이동후 검색이 안된다.
 
 ![image](https://user-images.githubusercontent.com/71121027/101320694-88c15e80-38a7-11eb-9f82-b60f88123a44.png)
