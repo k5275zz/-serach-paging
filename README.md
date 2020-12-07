@@ -10,7 +10,7 @@
 <br>
 
 <hr>
-<h5>스프링 페이징 검색 기능구현</h5>
+<h2>스프링 페이징 검색 기능구현</h2>
 <hr>
 
 ![image](https://user-images.githubusercontent.com/71121027/101319116-c40e5e00-38a4-11eb-8792-962fe90cf82a.png)
